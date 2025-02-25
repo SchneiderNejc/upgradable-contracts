@@ -1,0 +1,39 @@
+# Foundry Build & Cache Files
+out/
+cache/
+lib/
+broadcast/
+script/output/
+
+# Forge Test Coverage Reports
+lcov-report/
+coverage/
+
+# Foundry Project Dependencies
+foundry.toml
+!.gitmodules
+
+# VSCode Settings & Extensions
+.vscode/
+
+# Node.js (if using JS/TS scripts)
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Python Virtual Environment (if using Python scripts)
+venv/
+__pycache__/
+
+# Hardhat (if used alongside Foundry)
+artifacts/
+typechain/
+dist/
+
+# Miscellaneous
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*.swn
