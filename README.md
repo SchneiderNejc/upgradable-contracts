@@ -79,3 +79,11 @@ Proxy Contract: Forwards calls to the implementation and contains state.
 Admin Role: Only the admin can upgrade the proxy.
 Fallback Mechanism: Forwards calls to the implementation using delegatecall.
 It provides a simpler proxy structure with clear upgradeability control.
+
+---
+
+Transparent Proxy Pattern (EIP-1967, EIP-897) – Most widely used due to OpenZeppelin’s implementation and strong security guarantees. Consists of three main contracts:
+
+Proxy Contract – A minimal contract that forwards calls to the implementation using delegatecall. It holds the storage and ensures upgrades can only be performed by an admin.
+Implementation Contract – The actual logic contract that gets executed via delegatecall. It can be upgraded while keeping the same proxy address.
+Proxy Admin Contract (Optional) – A separate contract that manages proxy upgrades, adding an extra layer of security. Used in OpenZeppelin's implementation.
