@@ -10,11 +10,35 @@ Upgradable contracts are typically implemented using proxy patterns. The key ide
 
 Key Proxy Patterns:
 
-Transparent Proxy (ERC-1967) – The most widely used pattern, where only an admin can upgrade the contract, while regular users interact with the proxy normally.
+Eternal Storage Pattern
+Stores contract logic in a separate contract while keeping all data in a dedicated storage contract.
+Rarely used today due to inefficiency and complexity.
 
-UUPS (Universal Upgradeable Proxy Standard) – A more gas-efficient variant where the implementation itself contains the upgrade logic.
+Delegatecall Proxy Pattern (Unstructured Storage)
+Uses a proxy contract with delegatecall to execute logic from an implementation contract.
+Data layout issues make it risky for upgrades.
 
-Beacon Proxy – Uses a beacon contract to manage multiple proxy instances that all share the same implementation.
+Transparent Proxy Pattern (EIP-1967 + EIP-897)
+Uses a proxy with an admin that can upgrade it, while regular users interact with the implementation.
+Admin cannot directly interact with the logic contract.
+Recommended for simple use cases.
+
+UUPS (Universal Upgradeable Proxy Standard) (EIP-1822)
+More gas-efficient than the transparent proxy by placing upgrade logic in the implementation itself.
+Requires implementation contracts to include upgrade functions.
+Recommended for more control and flexibility.
+
+Beacon Proxy Pattern (EIP-1967 + EIP-1971)
+A beacon contract manages implementation logic for multiple proxies.
+Useful for deploying many similar upgradable contracts.
+
+Metamorphic Contracts
+Uses self-destruct and redeployment to enable upgrades.
+Non-standard and riskier.
+
+Diamond Standard (EIP-2535)
+Supports modular contract logic via facets.
+Ideal for large-scale contracts with complex upgrade needs.
 
 Security Considerations
 
