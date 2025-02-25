@@ -43,23 +43,16 @@ Ideal for large-scale contracts with complex upgrade needs.
 Security Considerations
 
 While upgradable contracts offer flexibility, they introduce additional risks:
-
 Storage Collision – Upgrading an implementation may unintentionally alter storage layout. Proper storage slot management (e.g., ERC-1967) is crucial.
-
 Access Control – Only trusted parties should have permission to upgrade contracts to prevent malicious modifications.
-
 Proxy Selector Clashes – Ensuring function selectors in the proxy contract do not interfere with delegated calls.
 
 Project Structure
 
 This repository will include:
-
 Implementations of different proxy patterns.
-
 Test cases to verify upgradeability mechanisms.
-
 Scripts to deploy, interact with, and upgrade contracts.
-
 Documentation covering standards, best practices, and security guidelines.
 
 ---
