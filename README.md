@@ -61,3 +61,21 @@ Test cases to verify upgradeability mechanisms.
 Scripts to deploy, interact with, and upgrade contracts.
 
 Documentation covering standards, best practices, and security guidelines.
+
+---
+
+ERC Standards
+
+ERC-1967 is a standard for upgradeable proxies, defining fixed storage slots for key data:
+
+Implementation Slot: Stores the address of the current logic contract.
+Admin Slot: Stores the admin's address who can upgrade the implementation.
+Beacon Slot: Used for proxies that rely on a beacon contract.
+It ensures secure and consistent upgradeability of proxy contracts.
+
+ERC-897 defines a transparent proxy pattern for upgradeable contracts. It separates the proxy logic and implementation logic with the following:
+
+Proxy Contract: Forwards calls to the implementation and contains state.
+Admin Role: Only the admin can upgrade the proxy.
+Fallback Mechanism: Forwards calls to the implementation using delegatecall.
+It provides a simpler proxy structure with clear upgradeability control.
