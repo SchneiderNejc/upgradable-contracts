@@ -5,12 +5,16 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "./TransparentProxy.sol"; // Import TransparentProxy contract
 
 contract ProxyAdmin is Ownable {
-    // Function to upgrade the proxy to a new implementation
-    function upgrade(
     constructor(address initialOwner) Ownable(initialOwner) {}
+
+    function upgradeProxy(
         address proxy,
-        address newImplementation
-    ) external onlyOwner {
-        TransparentProxy(payable(proxy)).upgradeTo(newImplementation);
+        address newImplementation,
+        bytes memory data
+    ) public onlyOwner {
+        TransparentProxy(payable(proxy)).upgradeToAndCall(
+            newImplementation,
+            data
+        );
     }
 }
