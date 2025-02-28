@@ -30,6 +30,22 @@ contract TransparentProxy is ERC1967Proxy {
     {
         return ERC1967Utils.getImplementation();
     }
+
+    /**
+     * @dev Public function to upgrade implementation and optionally call initialization function.
+     * Can only be called by the proxy admin.
+     */
+    function upgradeToAndCall(
+        address newImplementation,
+        bytes memory data
+    ) external {
+        require(
+            msg.sender == ERC1967Utils.getAdmin(),
+            "Only admin can upgrade"
+        );
+        ERC1967Utils.upgradeToAndCall(newImplementation, data);
+    }
+
     /**
      * @dev Remove the following function in case contract should be able to receive eth.
      */
