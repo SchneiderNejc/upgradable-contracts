@@ -7,6 +7,7 @@ import "./TransparentProxy.sol"; // Import TransparentProxy contract
 contract ProxyAdmin is Ownable {
     // Function to upgrade the proxy to a new implementation
     function upgrade(
+    constructor(address initialOwner) Ownable(initialOwner) {}
         address proxy,
         address newImplementation
     ) external onlyOwner {
