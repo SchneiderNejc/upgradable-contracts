@@ -30,4 +30,10 @@ contract TransparentProxy is ERC1967Proxy {
     {
         return ERC1967Utils.getImplementation();
     }
+    /**
+     * @dev Remove the following function in case contract should be able to receive eth.
+     */
+    receive() external payable {
+        revert("ETH not accepted");
+    }
 }
